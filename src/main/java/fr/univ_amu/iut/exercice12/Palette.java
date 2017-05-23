@@ -1,6 +1,9 @@
 package fr.univ_amu.iut.exercice12;
 
+import fr.univ_amu.iut.exercice9.EcouteurSimple;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -32,6 +35,31 @@ public class Palette extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        panneau.setPrefSize(400,200);
+        haut.setAlignment(Pos.CENTER);
+        bas.setAlignment(Pos.CENTER);
+        Button buttonV = new Button("Vert");
+        buttonV.setId("Vert");
+        EventHandler<ActionEvent> ecouteurVert = event -> {
+            ++nbVert;
+            panneau.setStyle("-fx-background-color: green");
+        };
+        buttonV.setOnAction(ecouteurVert);
 
+        Button buttonR = new Button("Rouge");
+        buttonR.setId("Rouge");
+        EventHandler<ActionEvent> ecouteurRouge = event -> {
+            ++nbRouge;
+            panneau.setStyle("-fx-background-color: red");
+        };
+        buttonR.setOnAction(ecouteurRouge);
+
+        Button buttonB = new Button("Bleu");
+        buttonB.setId("Bleu");
+        EventHandler<ActionEvent> ecouteurBleu = event -> {
+            ++nbBleu;
+            panneau.setStyle("-fx-background-color: blue");
+        };
+        buttonB.setOnAction(ecouteurBleu);
     }
 }
