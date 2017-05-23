@@ -9,9 +9,12 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.Priority;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
@@ -35,31 +38,50 @@ public class Palette extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        panneau.setPrefSize(400,200);
-        haut.setAlignment(Pos.CENTER);
-        bas.setAlignment(Pos.CENTER);
-        Button buttonV = new Button("Vert");
-        buttonV.setId("Vert");
+        primaryStage.setTitle("Hello !");
+        primaryStage.setWidth(500);
+        primaryStage.setHeight(400);
+        vert = new Button("Vert");
+        rouge = new Button("Rouge");
+        bleu = new Button("Bleu");
+        vert.setId("Vert");
+        rouge.setId("Rouge");
+        bleu.setId("Bleu");
+        //EcouteurSimple ecouteurSimple = new EcouteurSimple();
         EventHandler<ActionEvent> ecouteurVert = event -> {
             ++nbVert;
-            panneau.setStyle("-fx-background-color: green");
+            System.out.println("Bouton vert" + nbVert);
         };
-        buttonV.setOnAction(ecouteurVert);
-
-        Button buttonR = new Button("Rouge");
-        buttonR.setId("Rouge");
         EventHandler<ActionEvent> ecouteurRouge = event -> {
             ++nbRouge;
-            panneau.setStyle("-fx-background-color: red");
+            System.out.println("Bouton rouge" + nbRouge);
         };
-        buttonR.setOnAction(ecouteurRouge);
-
-        Button buttonB = new Button("Bleu");
-        buttonB.setId("Bleu");
         EventHandler<ActionEvent> ecouteurBleu = event -> {
             ++nbBleu;
-            panneau.setStyle("-fx-background-color: blue");
+            System.out.println("Bouton bleu" + nbBleu);
         };
-        buttonB.setOnAction(ecouteurBleu);
+        vert.setOnAction(ecouteurVert);
+        rouge.setOnAction(ecouteurRouge);
+        bleu.setOnAction(ecouteurBleu);
+        primaryStage.setHeight(250);
+
+        haut = new HBox();
+        haut.setAlignment(Pos.CENTER);
+        haut.getChildren().add(vert);
+        haut.getChildren().add(rouge);
+        haut.getChildren().add(bleu);
+        haut.setHgrow(vert, Priority.ALWAYS);
+        haut.setHgrow(rouge, Priority.ALWAYS);
+        haut.setHgrow(bleu, Priority.ALWAYS);
+//        HBox.setHgrow(rouge, Priority.ALWAYS);
+//        HBox.setHgrow(bleu, Priority.ALWAYS);*/
+//        haut.getChildren().addAll(vert, rouge, bleu);
+//        root.setTop(haut);
+        root = new BorderPane();
+        root.setTop(haut);
+        Scene scene = new Scene(root);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+
     }
-}
+};
