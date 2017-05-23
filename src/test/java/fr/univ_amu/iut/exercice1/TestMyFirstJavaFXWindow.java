@@ -14,7 +14,7 @@ import static org.junit.Assert.fail;
 
 public class TestMyFirstJavaFXWindow extends ApplicationTest {
 
-    @Ignore
+    //@Ignore
     @Test
     public void should_initialize_stage_with_correct_title() {
         try {
