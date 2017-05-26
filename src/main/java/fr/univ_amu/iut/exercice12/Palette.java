@@ -39,10 +39,10 @@ public class Palette extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("Hello !");
-        primaryStage.setWidth(500);
-        primaryStage.setHeight(400);
+        //primaryStage.setWidth(400);
+        //primaryStage.setHeight(400);
         panneau = new Pane();
-        panneau.setPrefSize(200,200);
+        panneau.setPrefSize(400,200);
         label = new Label("");
         vert = new Button("Vert");
         rouge = new Button("Rouge");
@@ -76,10 +76,13 @@ public class Palette extends Application {
         haut.setHgrow(vert, Priority.ALWAYS);
         haut.setHgrow(rouge, Priority.ALWAYS);
         haut.setHgrow(bleu, Priority.ALWAYS);
+        haut.setSpacing(10);
+        haut.setPadding(new Insets(10,5,10,5));
         bas = new HBox();
         bas.setAlignment(Pos.CENTER);
         bas.getChildren().add(label);
         bas.setHgrow(label, Priority.ALWAYS);
+        label.setFont(new Font("Tahoma",20));
         root = new BorderPane();
         root.setTop(haut);
         root.setBottom(bas);
