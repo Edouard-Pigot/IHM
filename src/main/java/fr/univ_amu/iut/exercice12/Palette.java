@@ -41,30 +41,29 @@ public class Palette extends Application {
         primaryStage.setTitle("Hello !");
         primaryStage.setWidth(500);
         primaryStage.setHeight(400);
+        panneau.setPrefSize(200,200);
+        label = new Label("");
         vert = new Button("Vert");
         rouge = new Button("Rouge");
         bleu = new Button("Bleu");
         vert.setId("Vert");
         rouge.setId("Rouge");
         bleu.setId("Bleu");
-        //EcouteurSimple ecouteurSimple = new EcouteurSimple();
         EventHandler<ActionEvent> ecouteurVert = event -> {
             ++nbVert;
-            System.out.println("Bouton vert" + nbVert);
+            label.setText(vert.getText() + " choisi " + nbVert + " fois");
         };
         EventHandler<ActionEvent> ecouteurRouge = event -> {
             ++nbRouge;
-            System.out.println("Bouton rouge" + nbRouge);
+            label.setText(rouge.getText() + " choisi " + nbRouge + " fois");
         };
         EventHandler<ActionEvent> ecouteurBleu = event -> {
             ++nbBleu;
-            System.out.println("Bouton bleu" + nbBleu);
+            label.setText(bleu.getText() + " choisi " + nbBleu + " fois");
         };
         vert.setOnAction(ecouteurVert);
         rouge.setOnAction(ecouteurRouge);
         bleu.setOnAction(ecouteurBleu);
-        primaryStage.setHeight(250);
-
         haut = new HBox();
         haut.setAlignment(Pos.CENTER);
         haut.getChildren().add(vert);
@@ -73,15 +72,15 @@ public class Palette extends Application {
         haut.setHgrow(vert, Priority.ALWAYS);
         haut.setHgrow(rouge, Priority.ALWAYS);
         haut.setHgrow(bleu, Priority.ALWAYS);
-//        HBox.setHgrow(rouge, Priority.ALWAYS);
-//        HBox.setHgrow(bleu, Priority.ALWAYS);*/
-//        haut.getChildren().addAll(vert, rouge, bleu);
-//        root.setTop(haut);
+        bas = new HBox();
+        bas.setAlignment(Pos.CENTER);
+        bas.getChildren().add(label);
+        bas.setHgrow(label, Priority.ALWAYS);
         root = new BorderPane();
         root.setTop(haut);
+        root.setBottom(bas);
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.show();
-
     }
 };
