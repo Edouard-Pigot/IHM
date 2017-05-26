@@ -41,6 +41,7 @@ public class Palette extends Application {
         primaryStage.setTitle("Hello !");
         primaryStage.setWidth(500);
         primaryStage.setHeight(400);
+        panneau = new Pane();
         panneau.setPrefSize(200,200);
         label = new Label("");
         vert = new Button("Vert");
@@ -49,17 +50,20 @@ public class Palette extends Application {
         vert.setId("Vert");
         rouge.setId("Rouge");
         bleu.setId("Bleu");
-        EventHandler<ActionEvent> ecouteurVert = event -> {
+        EventHandler<ActionEvent> ecouteurVert = (ActionEvent event) -> {
             ++nbVert;
             label.setText(vert.getText() + " choisi " + nbVert + " fois");
+            panneau.setStyle("-fx-background-color: green");
         };
         EventHandler<ActionEvent> ecouteurRouge = event -> {
             ++nbRouge;
             label.setText(rouge.getText() + " choisi " + nbRouge + " fois");
+            panneau.setStyle("-fx-background-color: red");
         };
         EventHandler<ActionEvent> ecouteurBleu = event -> {
             ++nbBleu;
             label.setText(bleu.getText() + " choisi " + nbBleu + " fois");
+            panneau.setStyle("-fx-background-color: blue");
         };
         vert.setOnAction(ecouteurVert);
         rouge.setOnAction(ecouteurRouge);
@@ -79,6 +83,7 @@ public class Palette extends Application {
         root = new BorderPane();
         root.setTop(haut);
         root.setBottom(bas);
+        root.setCenter(panneau);
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.show();
